@@ -67,8 +67,7 @@ def render_results(company: str, df: pd.DataFrame, snapshots: dict):
         ui.label('Markdown export (copy-paste)').classes('text-lg font-semibold mt-4')
         ui.textarea(
             value=make_markdown(company, df, snapshots),
-            autogrow=True,
-        ).props('readonly')
+        ).props('autogrow readonly')
 
 def make_markdown(company: str, df: pd.DataFrame, snapshots: dict) -> str:
     today = dt.date.today().isoformat()
