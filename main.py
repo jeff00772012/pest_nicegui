@@ -1,5 +1,5 @@
 # main.py
-from nicegui import ui
+from nicegui import ui, run
 import datetime as dt
 import pandas as pd
 
@@ -130,11 +130,12 @@ with ui.row().classes('w-full p-4'):
             dialog.open()
 
             try:
-                df, picks, snapshots = run_pipeline(
-                    company=company,
-                    days=int(days_input.value),
-                    max_articles=int(max_articles_input.value),
-                )
+                df, picks, snapshots = await run.io_bound(
+            run_pipeline,
+            company=company,
+            days=int(days_input.value),
+            max_articles=int(max_articles_input.value),
+        )
                 render_results(company, df, snapshots)
             finally:
                 dialog.close()
