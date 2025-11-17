@@ -1,0 +1,8 @@
+nicegui
+feedparser
+requests
+beautifulsoup4
+pandas
+scikit-learn
+networkx
+numpy
