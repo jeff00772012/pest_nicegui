@@ -146,4 +146,8 @@ with ui.row().classes('w-full p-4'):
     result_area = ui.column().classes('w-3/4 p-4')
 
 
-ui.run(host='0.0.0.0', port=8080)  # expose on network so your iPad can reach it
+import os
+
+if __name__ in ("__main__", "__mp_main__"):
+    port = int(os.getenv("PORT", "8080"))
+    ui.run(host="0.0.0.0", port=port, reload=False)
